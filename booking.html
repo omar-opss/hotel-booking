@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حجز فندق</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="booking-container">
+    <h1>📅 احجز غرفتك الآن</h1>
+    
+    <form id="bookingForm">
+      <label for="name">الاسم</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="phone">رقم الهاتف</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="date">تاريخ الحجز</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="time">الوقت</label>
+      <select id="time" name="time" required>
+        <option value="">اختر وقت الحجز</option>
+        <option value="10:00 صباحًا">10:00 صباحًا</option>
+        <option value="12:00 ظهرًا">12:00 ظهرًا</option>
+        <option value="02:00 مساءً">02:00 مساءً</option>
+        <option value="04:00 مساءً">04:00 مساءً</option>
+        <option value="06:00 مساءً">06:00 مساءً</option>
+        <option value="08:00 مساءً">08:00 مساءً</option>
+      </select>
+
+      <button type="submit">احجز الآن</button>
+    </form>
+  </div>
+
+  <!-- ربط ملف الجافا -->
+  <script type="module" src="booking.js"></script>
+</body>
+</html>
