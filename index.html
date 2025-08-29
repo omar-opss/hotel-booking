@@ -1,209 +1,248 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>فندق الأحلام</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>فندق النجوم — تجربة فاخرة</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: "Cairo", sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-    }
 
-    header {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      background: url("images/IMG_6977.jpeg") no-repeat center center/cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-    }
-
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-    }
-
-    header .content {
-      position: relative;
-      z-index: 2;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-bottom: 25px;
-    }
-
-    header a {
-      background: #ff9900;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    header a:hover {
-      background: #cc7a00;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.9);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      z-index: 999;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    nav a {
-      color: #333;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #ff9900;
-    }
-
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      color: #222;
-    }
-
-    .rooms {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-    }
-
-    .room {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: 0.3s;
-    }
-
-    .room img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-
-    .room h3 {
-      margin: 15px 0 10px;
-    }
-
-    .room p {
-      padding: 0 15px 15px;
-      color: #666;
-    }
-
-    .room a {
-      display: inline-block;
-      margin: 0 0 20px;
-      padding: 10px 20px;
-      background: #ff9900;
-      color: white;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .room a:hover {
-      background: #cc7a00;
-    }
-
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-  </style>
+  <!-- Favicons (استبدل إذا عندك) -->
+  <link rel="icon" href="assets/favicon.png" type="image/png">
 </head>
 <body>
 
-  <nav>
-    <div class="logo">فندق الأحلام</div>
-    <div class="menu">
-      <a href="index.html">الرئيسية</a>
-      <a href="rooms.html">الغرف</a>
-      <a href="booking.html">الحجز</a>
-      <a href="contact.html">تواصل معنا</a>
-    </div>
-  </nav>
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-white.png" alt="لوغو الفندق" class="brand-logo">
+        <span class="brand-text">فندق النجوم</span>
+      </a>
 
-  <header>
-    <div class="content">
-      <h1>مرحبا بكم في فندق الأحلام</h1>
-      <p>أفضل إقامة لقضاء عطلة لا تُنسى</p>
-      <a href="booking.html">احجز الآن</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="rooms.html">الغرف</a></li>
+          <li><a href="booking.html" class="cta">احجز الآن</a></li>
+          <li><a href="contact.html">اتصل بنا</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" aria-label="قائمة">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <section>
-    <h2>غرفنا</h2>
-    <div class="rooms">
-      <div class="room">
-        <img src="images/IMG_6976.jpeg" alt="غرفة فاخرة">
-        <h3>غرفة فاخرة</h3>
-        <p>غرفة واسعة مع إطلالة رائعة وخدمات مميزة.</p>
-        <a href="booking.html">احجز الآن</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" style="background-image:url('assets/hero-hotel.jpg')"></div>
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>تجربة إقامة لا تُنسى</h1>
+        <p>رفاهية، راحة، وموقع متميز. استمتع بخدمات مصممة خصيصاً لك.</p>
+        <div class="hero-ctas">
+          <a href="rooms.html" class="btn btn-outline">استعرض الغرف</a>
+          <a href="booking.html" class="btn btn-primary">احجز الآن</a>
+        </div>
       </div>
-      <div class="room">
-        <img src="images/IMG_6975.jpeg" alt="غرفة مزدوجة">
-        <h3>غرفة مزدوجة</h3>
-        <p>مثالية للأزواج مع كل وسائل الراحة الحديثة.</p>
-        <a href="booking.html">احجز الآن</a>
-      </div>
-      <div class="room">
-        <img src="images/IMG_6972.jpeg" alt="غرفة مفردة">
-        <h3>غرفة مفردة</h3>
-        <p>خيار مناسب لرحلة عمل قصيرة أو إقامة فردية.</p>
-        <a href="booking.html">احجز الآن</a>
-      </div>
-      <div class="room">
-        <img src="images/IMG_6973.jpeg" alt="جناح فاخر">
-        <h3>جناح فاخر</h3>
-        <p>مساحة أكبر وخدمات استثنائية لإقامة فاخرة.</p>
-        <a href="booking.html">احجز الآن</a>
+
+      <div class="hero-booking-card">
+        <form class="mini-booking" id="miniBookingForm">
+          <h3>احجز إقامتك</h3>
+          <div class="field">
+            <label for="checkin">تاريخ الدخول</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="field">
+            <label for="checkout">تاريخ الخروج</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="field grid-2">
+            <div>
+              <label for="guests">الضيف</label>
+              <select id="guests" name="guests">
+                <option>1</option>
+                <option selected>2</option>
+                <option>3</option>
+                <option>4+</option>
+              </select>
+            </div>
+            <div>
+              <label for="roomType">نوع الغرفة</label>
+              <select id="roomType" name="roomType">
+                <option>قياسية</option>
+                <option>ديلوكس</option>
+                <option>جونيور سويت</option>
+                <option>سويت رئاسي</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary full">تحقق من التوافر</button>
+        </form>
       </div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2025 جميع الحقوق محفوظة - فندق الأحلام</p>
+  <!-- FEATURES -->
+  <section class="features container">
+    <div class="feature">
+      <img src="assets/icon-location.svg" alt="">
+      <h4>موقع استراتيجي</h4>
+      <p>في قلب المدينة و قريب من المعالم الرئيسية.</p>
+    </div>
+    <div class="feature">
+      <img src="assets/icon-spa.svg" alt="">
+      <h4>سبا ومركز صحي</h4>
+      <p>خدمات استرخاء وتجديد طاقة مميزة.</p>
+    </div>
+    <div class="feature">
+      <img src="assets/icon-restaurant.svg" alt="">
+      <h4>مطاعم فاخرة</h4>
+      <p>قوائم مبتكرة وغرف طعام راقية.</p>
+    </div>
+    <div class="feature">
+      <img src="assets/icon-wifi.svg" alt="">
+      <h4>واي فاي مجاني</h4>
+      <p>اتصال سريع ومجاني في جميع المناطق.</p>
+    </div>
+  </section>
+
+  <!-- ROOMS PREVIEW -->
+  <section class="rooms container">
+    <div class="section-head">
+      <h2>الغرف المميزة</h2>
+      <p>اختر من بين مجموعتنا المتنوعة من الغرف المصممة بذوق رفيع.</p>
+    </div>
+
+    <div class="rooms-grid">
+      <!-- Room Card 1 -->
+      <article class="room-card">
+        <div class="room-media" style="background-image:url('assets/room1.jpg')"></div>
+        <div class="room-body">
+          <h3>ديلوكس مزدوجة</h3>
+          <p class="price">من <strong>EGP 1,200</strong>/ليلة</p>
+          <p class="desc">غرفة مريحة مع إطلالة ساحرة وخدمة 24 ساعة.</p>
+          <div class="room-actions">
+            <a href="rooms.html#deluxe" class="btn btn-outline small">تفاصيل</a>
+            <a href="booking.html?room=deluxe" class="btn btn-primary small">احجز</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Room Card 2 -->
+      <article class="room-card">
+        <div class="room-media" style="background-image:url('assets/room2.jpg')"></div>
+        <div class="room-body">
+          <h3>جونيور سويت</h3>
+          <p class="price">من <strong>EGP 2,000</strong>/ليلة</p>
+          <p class="desc">مساحة فاخرة مع ركن جلوس منفصل ووسائل راحة متقدمة.</p>
+          <div class="room-actions">
+            <a href="rooms.html#junior" class="btn btn-outline small">تفاصيل</a>
+            <a href="booking.html?room=junior" class="btn btn-primary small">احجز</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Room Card 3 -->
+      <article class="room-card">
+        <div class="room-media" style="background-image:url('assets/room3.jpg')"></div>
+        <div class="room-body">
+          <h3>السويت الرئاسي</h3>
+          <p class="price">من <strong>EGP 5,500</strong>/ليلة</p>
+          <p class="desc">تجربة فاخرة مع غرف خاصة وصالة خاصة وخدمات خاصة.</p>
+          <div class="room-actions">
+            <a href="rooms.html#presidential" class="btn btn-outline small">تفاصيل</a>
+            <a href="booking.html?room=presidential" class="btn btn-primary small">احجز</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="more-rooms">
+      <a href="rooms.html" class="btn btn-ghost">عرض جميع الغرف</a>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-head center">
+        <h2>آراء النزلاء</h2>
+        <p>ما يقولونه عنا هو معيارنا الحقيقي</p>
+      </div>
+
+      <div class="testi-grid">
+        <blockquote class="testi">
+          <p>«خدمة ممتازة وإفطار لا يُنسى. سأعود بالتأكيد!»</p>
+          <cite>— سارة م.</cite>
+        </blockquote>
+
+        <blockquote class="testi">
+          <p>«الموقع مثالي والسرير مريح جداً — إقامة ممتازة.»</p>
+          <cite>— أحمد ر.</cite>
+        </blockquote>
+
+        <blockquote class="testi">
+          <p>«فريق محترف ومتفاني، شكراً لكم على الاهتمام بالتفاصيل.»</p>
+          <cite>— ليلى ن.</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS / OFFERS -->
+  <section class="offers container">
+    <div class="promo-card">
+      <h3>عرض خاص</h3>
+      <p>احصل على خصم 15٪ للحجوزات المباشرة قبل نهاية الشهر.</p>
+      <a href="booking.html" class="btn btn-primary">احجز واستفد</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="col">
+        <a class="brand footer-brand" href="index.html">
+          <img src="assets/logo-gold.png" alt="logo">
+          <span>فندق النجوم</span>
+        </a>
+        <p>رفاهية، راحة، وضيافة على أعلى مستوى.</p>
+      </div>
+
+      <div class="col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="rooms.html">الغرف</a></li>
+          <li><a href="booking.html">الحجز</a></li>
+          <li><a href="contact.html">اتصل بنا</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h4>تواصل معنا</h4>
+        <p>هاتف: <a href="tel:+201010000000">+20 101 000 0000</a></p>
+        <p>البريد: <a href="mailto:info@hotel.com">info@hotel.com</a></p>
+        <div class="socials">
+          <a href="#" aria-label="instagram">IG</a>
+          <a href="#" aria-label="facebook">FB</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>©️ <span id="year"></span> فندق النجوم. جميع الحقوق محفوظة.</p>
+      <p class="credits">تم التصميم بواسطة <strong>Omar / Dev</strong></p>
+    </div>
   </footer>
 
+  <!-- SCRIPTS -->
+  <script src="script.js" defer></script>
 </body>
 </html>
