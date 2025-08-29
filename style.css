@@ -531,3 +531,7 @@ a {
 .btn-back:hover {
   background: #b8932d;
 }
+
+header {
+  background-image: url("images/IMG_6977.jpeg");
+}
