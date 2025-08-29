@@ -11,7 +11,7 @@
   <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Favicons (استبدل إذا عندك) -->
+  <!-- Favicons -->
   <link rel="icon" href="assets/favicon.png" type="image/png">
 </head>
 <body>
@@ -41,7 +41,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg" style="background-image:url('assets/hero-hotel.jpg')"></div>
+    <div class="hero-bg" style="background-image:url('IMG_6977.jpeg')"></div>
     <div class="container hero-content">
       <div class="hero-text">
         <h1>تجربة إقامة لا تُنسى</h1>
@@ -50,41 +50,6 @@
           <a href="rooms.html" class="btn btn-outline">استعرض الغرف</a>
           <a href="booking.html" class="btn btn-primary">احجز الآن</a>
         </div>
-      </div>
-
-      <div class="hero-booking-card">
-        <form class="mini-booking" id="miniBookingForm">
-          <h3>احجز إقامتك</h3>
-          <div class="field">
-            <label for="checkin">تاريخ الدخول</label>
-            <input type="date" id="checkin" name="checkin" required>
-          </div>
-          <div class="field">
-            <label for="checkout">تاريخ الخروج</label>
-            <input type="date" id="checkout" name="checkout" required>
-          </div>
-          <div class="field grid-2">
-            <div>
-              <label for="guests">الضيف</label>
-              <select id="guests" name="guests">
-                <option>1</option>
-                <option selected>2</option>
-                <option>3</option>
-                <option>4+</option>
-              </select>
-            </div>
-            <div>
-              <label for="roomType">نوع الغرفة</label>
-              <select id="roomType" name="roomType">
-                <option>قياسية</option>
-                <option>ديلوكس</option>
-                <option>جونيور سويت</option>
-                <option>سويت رئاسي</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary full">تحقق من التوافر</button>
-        </form>
       </div>
     </div>
   </section>
@@ -123,7 +88,7 @@
     <div class="rooms-grid">
       <!-- Room Card 1 -->
       <article class="room-card">
-        <div class="room-media" style="background-image:url('assets/room1.jpg')"></div>
+        <div class="room-media" style="background-image:url('IMG_6976.jpeg')"></div>
         <div class="room-body">
           <h3>ديلوكس مزدوجة</h3>
           <p class="price">من <strong>EGP 1,200</strong>/ليلة</p>
@@ -137,7 +102,7 @@
 
       <!-- Room Card 2 -->
       <article class="room-card">
-        <div class="room-media" style="background-image:url('assets/room2.jpg')"></div>
+        <div class="room-media" style="background-image:url('IMG_6975.jpeg')"></div>
         <div class="room-body">
           <h3>جونيور سويت</h3>
           <p class="price">من <strong>EGP 2,000</strong>/ليلة</p>
@@ -151,98 +116,11 @@
 
       <!-- Room Card 3 -->
       <article class="room-card">
-        <div class="room-media" style="background-image:url('assets/room3.jpg')"></div>
+        <div class="room-media" style="background-image:url('IMG_6974.jpeg')"></div>
         <div class="room-body">
           <h3>السويت الرئاسي</h3>
           <p class="price">من <strong>EGP 5,500</strong>/ليلة</p>
           <p class="desc">تجربة فاخرة مع غرف خاصة وصالة خاصة وخدمات خاصة.</p>
           <div class="room-actions">
             <a href="rooms.html#presidential" class="btn btn-outline small">تفاصيل</a>
-            <a href="booking.html?room=presidential" class="btn btn-primary small">احجز</a>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="more-rooms">
-      <a href="rooms.html" class="btn btn-ghost">عرض جميع الغرف</a>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials">
-    <div class="container">
-      <div class="section-head center">
-        <h2>آراء النزلاء</h2>
-        <p>ما يقولونه عنا هو معيارنا الحقيقي</p>
-      </div>
-
-      <div class="testi-grid">
-        <blockquote class="testi">
-          <p>«خدمة ممتازة وإفطار لا يُنسى. سأعود بالتأكيد!»</p>
-          <cite>— سارة م.</cite>
-        </blockquote>
-
-        <blockquote class="testi">
-          <p>«الموقع مثالي والسرير مريح جداً — إقامة ممتازة.»</p>
-          <cite>— أحمد ر.</cite>
-        </blockquote>
-
-        <blockquote class="testi">
-          <p>«فريق محترف ومتفاني، شكراً لكم على الاهتمام بالتفاصيل.»</p>
-          <cite>— ليلى ن.</cite>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWS / OFFERS -->
-  <section class="offers container">
-    <div class="promo-card">
-      <h3>عرض خاص</h3>
-      <p>احصل على خصم 15٪ للحجوزات المباشرة قبل نهاية الشهر.</p>
-      <a href="booking.html" class="btn btn-primary">احجز واستفد</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="col">
-        <a class="brand footer-brand" href="index.html">
-          <img src="assets/logo-gold.png" alt="logo">
-          <span>فندق النجوم</span>
-        </a>
-        <p>رفاهية، راحة، وضيافة على أعلى مستوى.</p>
-      </div>
-
-      <div class="col">
-        <h4>روابط سريعة</h4>
-        <ul>
-          <li><a href="rooms.html">الغرف</a></li>
-          <li><a href="booking.html">الحجز</a></li>
-          <li><a href="contact.html">اتصل بنا</a></li>
-        </ul>
-      </div>
-
-      <div class="col">
-        <h4>تواصل معنا</h4>
-        <p>هاتف: <a href="tel:+201010000000">+20 101 000 0000</a></p>
-        <p>البريد: <a href="mailto:info@hotel.com">info@hotel.com</a></p>
-        <div class="socials">
-          <a href="#" aria-label="instagram">IG</a>
-          <a href="#" aria-label="facebook">FB</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom container">
-      <p>© <span id="year"></span> فندق النجوم. جميع الحقوق محفوظة.</p>
-      <p class="credits">تم التصميم بواسطة <strong>Omar / Dev</strong></p>
-    </div>
-  </footer>
-
-  <!-- SCRIPTS -->
-  <script src="script.js" defer></script>
-</body>
-</html>
+            <a href="booking.html?room=presidential" class="btn btn-primary small">
