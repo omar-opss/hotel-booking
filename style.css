@@ -536,3 +536,51 @@ header {
   background-image: url("IMG_6974.jpeg");
 }
 
+
+/* Thank You Page */
+.thankyou-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.thankyou-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px 30px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.thankyou-card h1 {
+  font-size: 2.5rem;
+  color: #e67e22; /* لون برتقالي شيك */
+  margin-bottom: 15px;
+}
+
+.thankyou-card p {
+  font-size: 1.1rem;
+  margin: 8px 0;
+  color: #333;
+}
+
+.btn-back {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #e67e22;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.btn-back:hover {
+  background: #cf711f;
+}
