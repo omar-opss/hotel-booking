@@ -1,15 +1,42 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حجز فندق</title>
+  <title>الحجز - فندق النجوم</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="booking-container">
-    <h1>📅 احجز غرفتك الآن</h1>
-    
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-white.png" alt="لوغو الفندق" class="brand-logo">
+        <span class="brand-text">فندق النجوم</span>
+      </a>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="rooms.html">الغرف</a></li>
+          <li><a href="booking.html" class="cta active">احجز الآن</a></li>
+          <li><a href="contact.html">اتصل بنا</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO (خلفية) -->
+  <section class="hero small-hero" style="background-image:url('assets/IMG_6978.png');">
+    <div class="hero-text">
+      <h1>📅 احجز غرفتك الآن</h1>
+      <p>سهولة وسرعة في الحجز، فقط املأ البيانات أدناه</p>
+    </div>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <div class="booking-container container">
     <form id="bookingForm">
       <label for="name">الاسم</label>
       <input type="text" id="name" name="name" required>
@@ -31,11 +58,48 @@
         <option value="08:00 مساءً">08:00 مساءً</option>
       </select>
 
-      <button type="submit">احجز الآن</button>
+      <button type="submit" class="btn btn-primary full">احجز الآن</button>
     </form>
   </div>
 
-  <!-- ربط ملف الجافا -->
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="col">
+        <a class="brand footer-brand" href="index.html">
+          <img src="assets/logo-gold.png" alt="logo">
+          <span>فندق النجوم</span>
+        </a>
+        <p>رفاهية، راحة، وضيافة على أعلى مستوى.</p>
+      </div>
+
+      <div class="col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="rooms.html">الغرف</a></li>
+          <li><a href="booking.html">الحجز</a></li>
+          <li><a href="contact.html">اتصل بنا</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h4>تواصل معنا</h4>
+        <p>هاتف: <a href="tel:+201010876605">+20 1010876605</a></p>
+        <p>البريد: <a href="mailto:omar0524987@gmail.com">omar0524987@gmail.com</a></p>
+        <div class="socials">
+          <a href="#" aria-label="instagram">IG</a>
+          <a href="#" aria-label="facebook">FB</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>©️ <span id="year"></span> فندق النجوم. جميع الحقوق محفوظة.</p>
+      <p class="credits">تم التصميم بواسطة <strong>Omar / Dev</strong></p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
   <script type="module" src="booking.js"></script>
 </body>
 </html>
