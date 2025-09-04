@@ -854,3 +854,22 @@ body, html {
 .contact-form button:hover {
   background: #dca600;
 }
+
+/* Navbar عامة لكل الأجهزة */
+.navbar {
+  background: #222 !important; /* أسود ثابت */
+  color: #fff !important;
+  padding: 15px 20px;
+  text-align: right;
+  position: fixed;   /* تبقى ثابتة فوق */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* لو عايز تعدل شكلها على الموبايل تحديدًا */
+@media (max-width: 768px) {
+  .navbar {
+    background: rgba(34, 34, 34, 0.95) !important; /* أسود شبه شفاف */
+  }
+}
