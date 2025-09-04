@@ -16,15 +16,15 @@
   <!-- CONTACT SECTION -->
   <section class="contact-section">
     <h2>اتصل بنا</h2>
-    <form id="contactForm">
-      <label>الاسم:</label>
-      <input type="text" id="name" required>
+    <form id="contactForm" class="contact-form">
+      <label for="name">الاسم:</label>
+      <input type="text" id="name" placeholder="اكتب اسمك هنا" required>
 
-      <label>رقم الهاتف:</label>
-      <input type="text" id="phone" required>
+      <label for="phone">رقم الهاتف:</label>
+      <input type="text" id="phone" placeholder="اكتب رقم هاتفك" required>
 
-      <label>الرسالة:</label>
-      <textarea id="message" rows="5" required></textarea>
+      <label for="message">الرسالة:</label>
+      <textarea id="message" rows="5" placeholder="اكتب رسالتك هنا" required></textarea>
 
       <button type="submit">إرسال</button>
     </form>
@@ -38,8 +38,8 @@
       let phone = document.getElementById("phone").value;
       let message = document.getElementById("message").value;
 
-      // رقم الواتساب بتاع الفندق
-      let whatsappNumber = "2010876605"; 
+
+      let whatsappNumber = "201010876605"; 
 
       let url = `https://wa.me/${whatsappNumber}?text=الاسم: ${name}%0Aالهاتف: ${phone}%0Aالرسالة: ${message}`;
 
