@@ -1,103 +1,112 @@
-/* =========================
-   CONTACT PAGE STYLES
-   ========================= */
-.contact-section {
-  padding: 80px 20px;
-}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اتصل بنا - فندق النجوم</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-.contact-section h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 40px;
-  color: #111;
-}
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-white.png" alt="لوغو الفندق" class="brand-logo">
+        <span class="brand-text">فندق النجوم</span>
+      </a>
 
-.contact-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: 1000px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 6px 25px rgba(0,0,0,0.12);
-}
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="rooms.html">الغرف</a></li>
+          <li><a href="booking.html">احجز الآن</a></li>
+          <li><a href="contact.html" class="cta active">اتصل بنا</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-.contact-form .form-group {
-  margin-bottom: 20px;
-}
+  <!-- HERO -->
+  <section class="hero small-hero" style="background-image:url('assets/contact-hero.jpg');">
+    <div class="hero-text">
+      <h1>اتصل بنا</h1>
+      <p>نحن هنا لمساعدتك في أي وقت</p>
+    </div>
+  </section>
 
-.contact-form label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #333;
-}
+  <!-- CONTACT SECTION -->
+  <section class="contact-section container">
+    <h2>تواصل معنا</h2>
+    <div class="contact-container">
+      
+      <!-- CONTACT FORM -->
+      <form action="#" method="POST" class="contact-form">
+        <div class="form-group">
+          <label for="name">الاسم الكامل:</label>
+          <input type="text" id="name" name="name" placeholder="اكتب اسمك" required>
+        </div>
 
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
-  outline: none;
-  transition: border 0.3s ease;
-}
+        <div class="form-group">
+          <label for="email">البريد الإلكتروني:</label>
+          <input type="email" id="email" name="email" placeholder="اكتب بريدك" required>
+        </div>
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #d4af37;
-}
+        <div class="form-group">
+          <label for="message">رسالتك:</label>
+          <textarea id="message" name="message" placeholder="اكتب رسالتك هنا" required></textarea>
+        </div>
 
-.contact-form textarea {
-  resize: vertical;
-  min-height: 120px;
-}
+        <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
+      </form>
 
-.contact-form button {
-  background: #d4af37;
-  color: #fff;
-  border: none;
-  padding: 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 16px;
-  transition: background 0.3s ease;
-  width: 100%;
-}
+      <!-- CONTACT INFO -->
+      <div class="contact-info">
+        <h3>فندق النجوم</h3>
+        <p><strong>العنوان:</strong> ١٢٣ شارع الرفاهية، القاهرة، مصر</p>
+        <p><strong>الهاتف:</strong> <a href="tel:+201001234567">+20 100 123 4567</a></p>
+        <p><strong>البريد:</strong> <a href="mailto:info@hotel.com">info@hotel.com</a></p>
+        <p><strong>ساعات العمل:</strong> خدمة ٢٤/٧</p>
+      </div>
+    </div>
+  </section>
 
-.contact-form button:hover {
-  background: #b8932d;
-}
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="col">
+        <a class="brand footer-brand" href="index.html">
+          <img src="assets/logo-gold.png" alt="logo">
+          <span>فندق النجوم</span>
+        </a>
+        <p>رفاهية، راحة، وضيافة على أعلى مستوى.</p>
+      </div>
 
-.contact-info h3 {
-  margin-bottom: 15px;
-  font-size: 1.3rem;
-  color: #222;
-}
+      <div class="col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="rooms.html">الغرف</a></li>
+          <li><a href="booking.html">الحجز</a></li>
+          <li><a href="contact.html">اتصل بنا</a></li>
+        </ul>
+      </div>
 
-.contact-info p {
-  margin: 10px 0;
-  color: #555;
-  font-size: 15px;
-}
+      <div class="col">
+        <h4>تواصل معنا</h4>
+        <p>هاتف: <a href="tel:+201010876605">+20 1010876605</a></p>
+        <p>البريد: <a href="mailto:omar0524987@gmail.com">omar0524987@gmail.com</a></p>
+        <div class="socials">
+          <a href="#" aria-label="instagram">IG</a>
+          <a href="#" aria-label="facebook">FB</a>
+        </div>
+      </div>
+    </div>
 
-.contact-info a {
-  color: #d4af37;
-  text-decoration: none;
-}
+    <div class="footer-bottom container">
+      <p>©️ <span id="year"></span> فندق النجوم. جميع الحقوق محفوظة.</p>
+      <p class="credits">تم التصميم بواسطة <strong>Omar / Dev</strong></p>
+    </div>
+  </footer>
 
-.contact-info a:hover {
-  text-decoration: underline;
-}
-
-/* 📱 Responsive */
-@media (max-width: 768px) {
-  .contact-container {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-}
+</body>
+</html>
