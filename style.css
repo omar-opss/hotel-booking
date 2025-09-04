@@ -306,6 +306,12 @@ a {
   margin-top: 15px;
 }
 
+.room-actions .btn {
+  flex: 1;
+  margin: 0 5px;
+  text-align: center;
+}
+
 /* -----------------------
    TESTIMONIALS
 -------------------------- */
@@ -420,6 +426,26 @@ a {
     font-size: 2rem;
   }
 }
+
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+  .hero-text p {
+    font-size: 1rem;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hero-booking-card {
+    width: 100%;
+  }
+  .room-media {
+    height: 160px;
+  }
+}
+
 /* -----------------------
    BOOKING PAGE
 -------------------------- */
@@ -484,6 +510,7 @@ a {
 #bookingForm button:hover {
   background: #b8932d;
 }
+
 /* -----------------------
    THANK YOU PAGE
 -------------------------- */
@@ -533,9 +560,10 @@ a {
 }
 
 header {
-  background-image: url("IMG_6974.jpeg");
+  background-image: url("assets/images/IMG_6974.jpeg");
+  background-size: cover;
+  background-position: center;
 }
-
 
 /* Thank You Page */
 .thankyou-container {
@@ -583,4 +611,52 @@ header {
 
 .btn-back:hover {
   background: #cf711f;
+}
+
+/* -----------------------
+   CONTACT PAGE
+-------------------------- */
+.contact-container {
+  max-width: 600px;
+  margin: 120px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.contact-container h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #111;
+}
+
+.contact-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-container input,
+.contact-container textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.contact-container button {
+  background: #d4af37;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-container button:hover {
+  background: #b8932d;
 }
