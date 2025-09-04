@@ -9,104 +9,43 @@
 <body>
 
   <!-- NAVBAR -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">
-        <img src="assets/logo-white.png" alt="لوغو الفندق" class="brand-logo">
-        <span class="brand-text">فندق النجوم</span>
-      </a>
-
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">الرئيسية</a></li>
-          <li><a href="rooms.html">الغرف</a></li>
-          <li><a href="booking.html">احجز الآن</a></li>
-          <li><a href="contact.html" class="cta active">اتصل بنا</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header class="navbar">
+    <div class="logo">فندق <span>النجوم</span></div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero small-hero" style="background-image:url('assets/contact-hero.jpg');">
-    <div class="hero-text">
-      <h1>اتصل بنا</h1>
-      <p>نحن هنا لمساعدتك في أي وقت</p>
-    </div>
-  </section>
-
   <!-- CONTACT SECTION -->
-  <section class="contact-section container">
-    <h2>تواصل معنا</h2>
-    <div class="contact-container">
-      
-      <!-- CONTACT FORM -->
-      <form action="#" method="POST" class="contact-form">
-        <div class="form-group">
-          <label for="name">الاسم الكامل:</label>
-          <input type="text" id="name" name="name" placeholder="اكتب اسمك" required>
-        </div>
+  <section class="contact-section">
+    <h2>اتصل بنا</h2>
+    <form id="contactForm">
+      <label>الاسم:</label>
+      <input type="text" id="name" required>
 
-        <div class="form-group">
-          <label for="email">البريد الإلكتروني:</label>
-          <input type="email" id="email" name="email" placeholder="اكتب بريدك" required>
-        </div>
+      <label>رقم الهاتف:</label>
+      <input type="text" id="phone" required>
 
-        <div class="form-group">
-          <label for="message">رسالتك:</label>
-          <textarea id="message" name="message" placeholder="اكتب رسالتك هنا" required></textarea>
-        </div>
+      <label>الرسالة:</label>
+      <textarea id="message" rows="5" required></textarea>
 
-        <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
-      </form>
-
-      <!-- CONTACT INFO -->
-      <div class="contact-info">
-        <h3>فندق النجوم</h3>
-        <p><strong>العنوان:</strong> ١٢٣ شارع الرفاهية، القاهرة، مصر</p>
-        <p><strong>الهاتف:</strong> <a href="tel:+201001234567">+20 100 123 4567</a></p>
-        <p><strong>البريد:</strong> <a href="mailto:info@hotel.com">info@hotel.com</a></p>
-        <p><strong>ساعات العمل:</strong> خدمة ٢٤/٧</p>
-      </div>
-    </div>
+      <button type="submit">إرسال</button>
+    </form>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="col">
-        <a class="brand footer-brand" href="index.html">
-          <img src="assets/logo-gold.png" alt="logo">
-          <span>فندق النجوم</span>
-        </a>
-        <p>رفاهية، راحة، وضيافة على أعلى مستوى.</p>
-      </div>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      e.preventDefault();
 
-      <div class="col">
-        <h4>روابط سريعة</h4>
-        <ul>
-          <li><a href="rooms.html">الغرف</a></li>
-          <li><a href="booking.html">الحجز</a></li>
-          <li><a href="contact.html">اتصل بنا</a></li>
-        </ul>
-      </div>
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+      let message = document.getElementById("message").value;
 
-      <div class="col">
-        <h4>تواصل معنا</h4>
-        <p>هاتف: <a href="tel:+201010876605">+20 1010876605</a></p>
-        <p>البريد: <a href="mailto:omar0524987@gmail.com">omar0524987@gmail.com</a></p>
-        <div class="socials">
-          <a href="#" aria-label="instagram">IG</a>
-          <a href="#" aria-label="facebook">FB</a>
-        </div>
-      </div>
-    </div>
+      // رقم الواتساب بتاع الفندق
+      let whatsappNumber = "2010876605"; 
 
-    <div class="footer-bottom container">
-      <p>©️ <span id="year"></span> فندق النجوم. جميع الحقوق محفوظة.</p>
-      <p class="credits">تم التصميم بواسطة <strong>Omar / Dev</strong></p>
-    </div>
-  </footer>
+      let url = `https://wa.me/${whatsappNumber}?text=الاسم: ${name}%0Aالهاتف: ${phone}%0Aالرسالة: ${message}`;
+
+      window.open(url, "_blank");
+    });
+  </script>
 
 </body>
 </html>
