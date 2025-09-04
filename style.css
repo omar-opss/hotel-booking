@@ -855,21 +855,30 @@ body, html {
   background: #dca600;
 }
 
-/* Navbar عامة لكل الأجهزة */
+/* حل مشكلة navbar */
 .navbar {
-  background: #222 !important; /* أسود ثابت */
+  background-color: #222 !important;  /* أسود ثابت */
   color: #fff !important;
-  padding: 15px 20px;
-  text-align: right;
-  position: fixed;   /* تبقى ثابتة فوق */
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 1000;
 }
 
-/* لو عايز تعدل شكلها على الموبايل تحديدًا */
-@media (max-width: 768px) {
-  .navbar {
-    background: rgba(34, 34, 34, 0.95) !important; /* أسود شبه شفاف */
-  }
+/* الروابط جوة الناف */
+.navbar a {
+  color: #fff !important;
+  text-decoration: none;
+}
+
+/* زرار المنيو (الهامبرجر) */
+.navbar-toggler {
+  border: none;
+  background: transparent;
+}
+
+/* الأيقونة تطلع بلون أبيض واضح */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
