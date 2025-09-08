@@ -1,14 +1,14 @@
 /* ===============================================
-   SCRIPT.JS - النسخة الاحترافية
+   SCRIPT.JS - النسخة الاحترافية بعد التحسين
    =============================================== */
 
 /* ---------- 1. BURGER MENU ---------- */
 const burger = document.querySelector(".burger");
-const nav = document.querySelector(".main-nav");
+const mainNav = document.querySelector(".main-nav");
 
-if (burger && nav) {
+if (burger && mainNav) {
   burger.addEventListener("click", () => {
-    nav.classList.toggle("nav-active");
+    mainNav.classList.toggle("nav-active");
     burger.classList.toggle("toggle");
   });
 }
@@ -29,12 +29,12 @@ if (bookingForm) {
 
     // تحقق من البيانات
     if (!name || !email || !date || !room) {
-      showMessage("من فضلك املأ كل الحقول", "error");
+      showMessage("من فضلك املأ كل الحقول", "error", bookingMessage);
       return;
     }
 
     // هنا ممكن تضيف إرسال البيانات لفايربيز أو سيرفر
-    showMessage("تم إرسال طلب الحجز بنجاح ✅", "success");
+    showMessage("تم إرسال طلب الحجز بنجاح ✅", "success", bookingMessage);
     bookingForm.reset();
   });
 }
@@ -61,46 +61,30 @@ if (contactForm) {
   });
 }
 
-/* ---------- 4. FUNCTIONS ---------- */
-function showMessage(text, type, element = bookingMessage) {
-  if (!element) return;
-
-  element.textContent = text;
-  element.className = ""; // مسح الكلاسات القديمة
-  element.classList.add(type === "success" ? "success" : "error");
-  element.style.display = "block";
-
-  setTimeout(() => {
-    element.style.display = "none";
-  }, 4000);
-}
-// Burger Menu
-const burgerMenu = document.getElementById("burgerMenu");
-const mainNav = document.getElementById("mainNav");
-burgerMenu.addEventListener("click", () => {
-  mainNav.classList.toggle("active");
-});
-
-// Dark/Light Mode
+/* ---------- 4. DARK/LIGHT MODE ---------- */
 const themeSwitch = document.getElementById("themeSwitch");
-themeSwitch.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-  themeSwitch.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
-});
 
-// Language Switch (AR <-> EN)
+if (themeSwitch) {
+  themeSwitch.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    themeSwitch.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+  });
+}
+
+/* ---------- 5. LANGUAGE SWITCH ---------- */
 const langSwitch = document.getElementById("langSwitch");
 const langElements = document.querySelectorAll(".lang");
-
 let currentLang = "ar";
-langSwitch.addEventListener("click", () => {
-  currentLang = currentLang === "ar" ? "en" : "ar";
-  langSwitch.textContent = currentLang === "ar" ? "EN" : "AR";
 
-  langElements.forEach(el => {
-    el.textContent = el.getAttribute(`data-${currentLang}`);
-  });
+if (langSwitch) {
+  langSwitch.addEventListener("click", () => {
+    currentLang = currentLang === "ar" ? "en" : "ar";
+    langSwitch.textContent = currentLang === "ar" ? "EN" : "AR";
 
-  // لو عايز تغير اتجاه الصفحة مع اللغة
-  document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
-});
+    langElements.forEach(el => {
+      const newText = el.getAttribute(`data-${currentLang}`);
+      if (newText) el.textContent = newText;
+    });
+
+    // تغيير اتجاه الصفحة
+    document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
