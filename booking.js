@@ -119,3 +119,7 @@ bookingForm.addEventListener("submit", async (e) => {
     submitBtn.textContent = "احجز الآن";
   }
 });
+
+// قراءة roomId من الرابط
+const urlParams = new URLSearchParams(window.location.search);
+const roomId = urlParams.get("roomId") || "default_room";
