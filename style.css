@@ -456,3 +456,24 @@ body.dark-mode .contact-grid {
   color: #fff;
   border: none;
 }
+
+/* زرار Dropdown */
+.dropdown-toggle {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: var(--transition);
+}
+.dropdown-toggle:hover {
+  border-color: var(--primary-color);
+}
+
+/* لما الـ Dropdown يفتح */
+.dropdown.open .dropdown-menu {
+  display: block;
+}
