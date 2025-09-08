@@ -351,3 +351,23 @@ h1, h2, h3, h4 {
   .hero-text h1 { font-size: 1.8rem; }
   .hero-text p { font-size: 1rem; }
 }
+
+.message {
+  margin-top: 10px;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.message.success {
+  color: #155724;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  color: #721c24;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
