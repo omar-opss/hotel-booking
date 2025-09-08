@@ -6,8 +6,10 @@
    1. VARIABLES (المتغيرات)
 ------------------------------------- */
 :root {
-  --primary-color: #d4af37; /* اللون الذهبي الأساسي */
-  --primary-hover: #b8932d; /* درجة أغمق للـ hover */
+  --primary-color: #d4af37;     /* اللون الذهبي الأساسي */
+  --primary-hover: #b8932d;     /* درجة أغمق للـ hover */
+  --accent-color: #c19a5b;      /* لون ثانوي */
+  --accent-hover: #a37e46;      /* لون ثانوي عند hover */
   --dark-color: #111;
   --text-color: #333;
   --light-gray: #f9f9f9;
@@ -17,6 +19,7 @@
   --radius-sm: 6px;
   --radius-md: 10px;
   --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
 /* ----------------------------------
@@ -127,7 +130,7 @@ h1, h2, h3, h4 {
   padding: 12px 25px;
   border-radius: var(--radius-sm);
   font-weight: 600;
-  transition: all 0.3s;
+  transition: var(--transition);
   text-align: center;
   border: none;
   cursor: pointer;
@@ -166,6 +169,7 @@ h1, h2, h3, h4 {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   font-size: 15px;
+  transition: var(--transition);
 }
 
 .form-group input:focus,
@@ -238,6 +242,42 @@ h1, h2, h3, h4 {
   font-size: 3rem;
   color: var(--white-color);
   margin-bottom: 15px;
+}
+
+/* == QUICK BOOKING == */
+.quick-booking {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.quick-booking input,
+.quick-booking select {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.quick-booking .btn {
+  background: var(--accent-color);
+  color: var(--white-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: var(--transition);
+}
+
+.quick-booking .btn:hover {
+  background: var(--accent-hover);
 }
 
 /* == ROOMS SECTION == */
@@ -338,7 +378,7 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) {
   /* HIDE NAV, SHOW BURGER MENU */
   .main-nav { display: none; }
-  /* (Here you would add JS to make a burger menu appear) */
+  /* (هنا ممكن تضيف كود JS للقائمة الجانبية) */
 
   .hero-text h1 { font-size: 2.2rem; }
 
@@ -347,11 +387,24 @@ h1, h2, h3, h4 {
   }
 }
 
+@media (max-width: 600px) {
+  .quick-booking {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .quick-booking input,
+  .quick-booking select,
+  .quick-booking .btn {
+    width: 100%;
+  }
+}
+
 @media (max-width: 480px) {
   .hero-text h1 { font-size: 1.8rem; }
   .hero-text p { font-size: 1rem; }
 }
 
+/* == MESSAGE NOTIFICATIONS == */
 .message {
   margin-top: 10px;
   font-weight: bold;
@@ -370,37 +423,4 @@ h1, h2, h3, h4 {
   color: #721c24;
   background: #f8d7da;
   border: 1px solid #f5c6cb;
-}
-
-.quick-booking {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 15px;
-  border-radius: 12px;
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.quick-booking input,
-.quick-booking select {
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-.quick-booking .btn {
-  background: #c19a5b;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.quick-booking .btn:hover {
-  background: #a37e46;
 }
