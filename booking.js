@@ -18,52 +18,57 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// عناصر الواجهة
+// عناصر الواجهة للتحكم فيها
 const bookingForm = document.getElementById("bookingForm");
 const submitBtn = document.getElementById("submitBtn");
 const messageFeedback = document.getElementById("messageFeedback");
 
-// دالة لعرض الرسائل
+// دالة لعرض الرسائل للمستخدم
 function showMessage(message, isSuccess) {
   messageFeedback.textContent = message;
   messageFeedback.className = isSuccess ? 'message success' : 'message error';
 }
 
-// التحقق من التداخل
+// 🏨 جلب roomId من الرابط (مثال: booking.html?roomId=deluxe_suite_201)
+const urlParams = new URLSearchParams(window.location.search);
+let roomId = urlParams.get("roomId") || "standard_room_101"; 
+// لو مفيش باراميتر في اللينك، ي fallback للغرفة القياسية
+
+// دالة للتحقق من تداخل الحجوزات
 async function isRoomAvailable(roomId, checkIn, checkOut) {
-  const bookingsRef = collection(db, "bookings");
-  const checkInDate = new Date(checkIn);
-  const checkOutDate = new Date(checkOut);
+    const bookingsRef = collection(db, "bookings");
+    const checkInDate = new Date(checkIn);
+    const checkOutDate = new Date(checkOut);
 
-  const q1 = query(bookingsRef, and(
-      where("roomId", "==", roomId),
-      where("checkInDate", ">=", checkInDate),
-      where("checkInDate", "<", checkOutDate)
-  ));
+    const q1 = query(bookingsRef, and(
+        where("roomId", "==", roomId),
+        where("checkInDate", ">=", checkInDate),
+        where("checkInDate", "<", checkOutDate)
+    ));
 
-  const q2 = query(bookingsRef, and(
-      where("roomId", "==", roomId),
-      where("checkOutDate", ">", checkInDate),
-      where("checkOutDate", "<=", checkOutDate)
-  ));
+    const q2 = query(bookingsRef, and(
+        where("roomId", "==", roomId),
+        where("checkOutDate", ">", checkInDate),
+        where("checkOutDate", "<=", checkOutDate)
+    ));
 
-  const q3 = query(bookingsRef, and(
-      where("roomId", "==", roomId),
-      where("checkInDate", "<=", checkInDate),
-      where("checkOutDate", ">=", checkOutDate)
-  ));
+    const q3 = query(bookingsRef, and(
+        where("roomId", "==", roomId),
+        where("checkInDate", "<=", checkInDate),
+        where("checkOutDate", ">=", checkOutDate)
+    ));
 
-  const [snapshot1, snapshot2, snapshot3] = await Promise.all([getDocs(q1), getDocs(q2), getDocs(q3)]);
+    const [snapshot1, snapshot2, snapshot3] = await Promise.all([getDocs(q1), getDocs(q2), getDocs(q3)]);
 
-  return snapshot1.empty && snapshot2.empty && snapshot3.empty;
+    return snapshot1.empty && snapshot2.empty && snapshot3.empty;
 }
 
-// معالجة الفورم
+// ربط الدالة مع الفورم في الصفحة
 bookingForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   submitBtn.disabled = true;
-  submitBtn.textContent = "⏳ جاري الحجز...";
+  submitBtn.textContent = "جاري الحجز...";
   showMessage("", true);
 
   const name = document.getElementById("name").value.trim();
@@ -71,19 +76,16 @@ bookingForm.addEventListener("submit", async (e) => {
   const checkIn = document.getElementById("checkInDate").value;
   const checkOut = document.getElementById("checkOutDate").value;
 
-  // مبدئيًا خليها غرفة ثابتة
-  const roomId = "standard_room_101";
-
-  // Validation
+  // التحقق من البيانات
   if (!name || !phone || !checkIn || !checkOut) {
     showMessage("⚠️ لازم تملأ كل البيانات.", false);
     submitBtn.disabled = false;
     submitBtn.textContent = "احجز الآن";
     return;
   }
-
+  
   if (new Date(checkIn) >= new Date(checkOut)) {
-    showMessage("⚠️ تاريخ المغادرة لازم يكون بعد الوصول.", false);
+    showMessage("⚠️ تاريخ المغادرة يجب أن يكون بعد تاريخ الوصول.", false);
     submitBtn.disabled = false;
     submitBtn.textContent = "احجز الآن";
     return;
@@ -93,7 +95,7 @@ bookingForm.addEventListener("submit", async (e) => {
     const isAvailable = await isRoomAvailable(roomId, checkIn, checkOut);
 
     if (!isAvailable) {
-      showMessage("❌ الغرفة محجوزة بالفعل في هذه الفترة.", false);
+      showMessage("❌ الغرفة محجوزة في هذه الفترة، برجاء اختيار تواريخ أخرى.", false);
       return;
     }
 
@@ -107,12 +109,12 @@ bookingForm.addEventListener("submit", async (e) => {
       createdAt: new Date()
     });
 
-    showMessage("✅ تم الحجز بنجاح! سنتواصل معك قريبًا.", true);
+    showMessage("✅ تم الحجز بنجاح! سيتم التواصل معك للتأكيد.", true);
     bookingForm.reset();
 
   } catch (error) {
     console.error("خطأ أثناء الحجز:", error);
-    showMessage("⚠️ حصل خطأ أثناء الحجز. حاول مرة أخرى.", false);
+    showMessage("⚠️ حصل خطأ أثناء الحجز. حاول تاني.", false);
   } finally {
     submitBtn.disabled = false;
     submitBtn.textContent = "احجز الآن";
