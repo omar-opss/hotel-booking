@@ -371,3 +371,36 @@ h1, h2, h3, h4 {
   background: #f8d7da;
   border: 1px solid #f5c6cb;
 }
+
+.quick-booking {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.quick-booking input,
+.quick-booking select {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.quick-booking .btn {
+  background: #c19a5b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.quick-booking .btn:hover {
+  background: #a37e46;
+}
