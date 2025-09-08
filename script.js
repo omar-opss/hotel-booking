@@ -157,3 +157,49 @@ if (bookingForm && feedback) {
   color: #fff;
   border: none;
 }
+
+// Dropdown function
+function setupDropdown(dropdownId, labelSingular, labelPlural) {
+  const dropdown = document.getElementById(dropdownId);
+  const toggle = dropdown.querySelector(".dropdown-toggle");
+  const menu = dropdown.querySelector(".dropdown-menu");
+  const countSpan = menu.querySelector(".count");
+  const increaseBtn = menu.querySelector(".increase");
+  const decreaseBtn = menu.querySelector(".decrease");
+  const applyBtn = menu.querySelector(".apply");
+
+  let count = 1;
+
+  toggle.addEventListener("click", () => {
+    dropdown.classList.toggle("open");
+  });
+
+  increaseBtn.addEventListener("click", () => {
+    count++;
+    countSpan.textContent = count;
+  });
+
+  decreaseBtn.addEventListener("click", () => {
+    if (count > 1) {
+      count--;
+      countSpan.textContent = count;
+    }
+  });
+
+  applyBtn.addEventListener("click", () => {
+    toggle.textContent = count + " " + (count === 1 ? labelSingular : labelPlural);
+    dropdown.classList.remove("open");
+  });
+
+  // غلق عند الضغط خارج
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove("open");
+    }
+  });
+}
+
+// Guests
+setupDropdown("guestsDropdown", "ضيف", "ضيوف");
+// Rooms
+setupDropdown("roomsDropdown", "غرفة", "غرف");
