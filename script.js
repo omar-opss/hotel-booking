@@ -81,3 +81,79 @@ if (bookingForm && feedback) {
     bookingForm.reset();
   });
 }
+/* ===========================
+   HERO SEARCH BOX
+=========================== */
+.search-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-top: 25px;
+}
+
+.search-box form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  align-items: end;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.search-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.search-field input,
+.search-field button {
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  font-size: 14px;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0;
+  width: 220px;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  margin-top: 5px;
+  padding: 10px;
+  z-index: 10;
+}
+.dropdown-menu .counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.dropdown-menu .count {
+  margin: 0 10px;
+}
+.dropdown-menu button {
+  padding: 5px 10px;
+}
+.dropdown-menu .apply {
+  width: 100%;
+  margin-top: 10px;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+}
