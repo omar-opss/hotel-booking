@@ -74,3 +74,33 @@ function showMessage(text, type, element = bookingMessage) {
     element.style.display = "none";
   }, 4000);
 }
+// Burger Menu
+const burgerMenu = document.getElementById("burgerMenu");
+const mainNav = document.getElementById("mainNav");
+burgerMenu.addEventListener("click", () => {
+  mainNav.classList.toggle("active");
+});
+
+// Dark/Light Mode
+const themeSwitch = document.getElementById("themeSwitch");
+themeSwitch.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  themeSwitch.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+});
+
+// Language Switch (AR <-> EN)
+const langSwitch = document.getElementById("langSwitch");
+const langElements = document.querySelectorAll(".lang");
+
+let currentLang = "ar";
+langSwitch.addEventListener("click", () => {
+  currentLang = currentLang === "ar" ? "en" : "ar";
+  langSwitch.textContent = currentLang === "ar" ? "EN" : "AR";
+
+  langElements.forEach(el => {
+    el.textContent = el.getAttribute(`data-${currentLang}`);
+  });
+
+  // لو عايز تغير اتجاه الصفحة مع اللغة
+  document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+});
