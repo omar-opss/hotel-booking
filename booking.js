@@ -1,8 +1,7 @@
 // Firebase SDK imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
-// ✅ Firebase Config بتاعك
 const firebaseConfig = {
   apiKey: "AIzaSyC8kMaKSz0rv5o3r3sef2Xdq6wm0uduoZE",
   authDomain: "hotel-booking-2a366.firebaseapp.com",
@@ -29,21 +28,48 @@ function showMessage(message, isSuccess) {
   messageFeedback.className = isSuccess ? "message success" : "message error";
 }
 
-// ربط الفورم
+// ✅ دالة التحقق من التداخل
+async function isRoomAvailable(roomId, checkIn, checkOut) {
+  const bookingsRef = collection(db, "bookings");
+  const snapshot = await getDocs(
+    query(bookingsRef, where("roomId", "==", roomId))
+  );
+
+  const newCheckIn = new Date(checkIn);
+  const newCheckOut = new Date(checkOut);
+
+  let available = true;
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+    const existingCheckIn = new Date(data.checkInDate);
+    const existingCheckOut = new Date(data.checkOutDate);
+
+    // لو التواريخ متداخلة
+    if (
+      (newCheckIn < existingCheckOut) && 
+      (newCheckOut > existingCheckIn)
+    ) {
+      available = false;
+    }
+  });
+
+  return available;
+}
+
+// ✅ ربط الفورم
 bookingForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // تعطيل الزرار مؤقتًا
   submitBtn.disabled = true;
   submitBtn.textContent = "⏳ جاري الحجز...";
 
-  // القيم من الفورم
   const name = document.getElementById("name").value.trim();
   const phone = document.getElementById("phone").value.trim();
   const checkIn = document.getElementById("checkInDate").value;
   const checkOut = document.getElementById("checkOutDate").value;
+  const roomId = "standard_room_101"; // مؤقتًا، ممكن نخليه ييجي من rooms.html
 
-  // Validation
   if (!name || !phone || !checkIn || !checkOut) {
     showMessage("⚠️ لازم تملأ كل البيانات", false);
     submitBtn.disabled = false;
@@ -51,11 +77,28 @@ bookingForm.addEventListener("submit", async (e) => {
     return;
   }
 
+  if (new Date(checkIn) >= new Date(checkOut)) {
+    showMessage("⚠️ تاريخ المغادرة لازم يكون بعد الوصول", false);
+    submitBtn.disabled = false;
+    submitBtn.textContent = "احجز الآن";
+    return;
+  }
+
   try {
-    // تخزين البيانات في Firestore
+    const available = await isRoomAvailable(roomId, checkIn, checkOut);
+
+    if (!available) {
+      showMessage("❌ الغرفة غير متاحة في هذه الفترة", false);
+      submitBtn.disabled = false;
+      submitBtn.textContent = "احجز الآن";
+      return;
+    }
+
+    // ✅ إضافة الحجز
     await addDoc(collection(db, "bookings"), {
       guestName: name,
       guestPhone: phone,
+      roomId,
       checkInDate: checkIn,
       checkOutDate: checkOut,
       createdAt: new Date()
@@ -64,7 +107,6 @@ bookingForm.addEventListener("submit", async (e) => {
     showMessage("✅ تم تسجيل الحجز بنجاح!", true);
     bookingForm.reset();
 
-    // تحويل لصفحة الشكر
     setTimeout(() => {
       window.location.href = "thankyou.html";
     }, 1500);
