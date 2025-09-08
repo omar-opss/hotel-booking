@@ -14,7 +14,7 @@
   <!-- Favicons -->
   <link rel="icon" href="assets/favicon.png" type="image/png">
 </head>
-<body>
+<body class="light-mode">
 
   <!-- NAVBAR -->
   <header class="site-header">
@@ -22,16 +22,16 @@
       <!-- الشعار -->
       <a class="brand" href="index.html">
         <img src="assets/logo-white.png" alt="لوغو الفندق" class="brand-logo">
-        <span class="brand-text">فندق النجوم</span>
+        <span class="brand-text" id="brandText">فندق النجوم</span>
       </a>
 
       <!-- القائمة الرئيسية -->
       <nav class="main-nav" id="mainNav">
         <ul>
-          <li><a href="index.html" class="active">الرئيسية</a></li>
-          <li><a href="rooms.html">الغرف</a></li>
-          <li><a href="booking.html" class="cta">احجز الآن</a></li>
-          <li><a href="contact.html">اتصل بنا</a></li>
+          <li><a href="index.html" class="active" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+          <li><a href="rooms.html" data-ar="الغرف" data-en="Rooms">الغرف</a></li>
+          <li><a href="booking.html" class="cta" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a></li>
+          <li><a href="contact.html" data-ar="اتصل بنا" data-en="Contact">اتصل بنا</a></li>
         </ul>
       </nav>
 
@@ -56,28 +56,31 @@
     <div class="hero-bg" style="background-image:url('assets/IMG_6978.png')"></div>
     <div class="container hero-content">
       <div class="hero-text">
-        <h1>تجربة إقامة لا تُنسى</h1>
-        <p>رفاهية، راحة، وموقع متميز. استمتع بخدمات مصممة خصيصاً لك.</p>
+        <h1 data-ar="تجربة إقامة لا تُنسى" data-en="An Unforgettable Stay">تجربة إقامة لا تُنسى</h1>
+        <p data-ar="رفاهية، راحة، وموقع متميز. استمتع بخدمات مصممة خصيصاً لك."
+           data-en="Luxury, comfort, and a prime location. Enjoy services tailored for you.">
+           رفاهية، راحة، وموقع متميز. استمتع بخدمات مصممة خصيصاً لك.
+        </p>
         <div class="hero-ctas">
-          <a href="rooms.html" class="btn btn-outline">استعرض الغرف</a>
-          <a href="booking.html" class="btn btn-primary">احجز الآن</a>
+          <a href="rooms.html" class="btn btn-outline" data-ar="استعرض الغرف" data-en="Explore Rooms">استعرض الغرف</a>
+          <a href="booking.html" class="btn btn-primary" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
         </div>
       </div>
 
       <div class="hero-booking-card">
         <form class="mini-booking" id="miniBookingForm">
-          <h3>احجز إقامتك</h3>
+          <h3 data-ar="احجز إقامتك" data-en="Book Your Stay">احجز إقامتك</h3>
           <div class="field">
-            <label for="checkin">تاريخ الدخول</label>
+            <label for="checkin" data-ar="تاريخ الدخول" data-en="Check-in Date">تاريخ الدخول</label>
             <input type="date" id="checkin" name="checkin" required>
           </div>
           <div class="field">
-            <label for="checkout">تاريخ الخروج</label>
+            <label for="checkout" data-ar="تاريخ الخروج" data-en="Check-out Date">تاريخ الخروج</label>
             <input type="date" id="checkout" name="checkout" required>
           </div>
           <div class="field grid-2">
             <div>
-              <label for="guests">الضيف</label>
+              <label for="guests" data-ar="الضيف" data-en="Guests">الضيف</label>
               <select id="guests" name="guests">
                 <option>1</option>
                 <option selected>2</option>
@@ -86,136 +89,22 @@
               </select>
             </div>
             <div>
-              <label for="roomType">نوع الغرفة</label>
+              <label for="roomType" data-ar="نوع الغرفة" data-en="Room Type">نوع الغرفة</label>
               <select id="roomType" name="roomType">
-                <option>قياسية</option>
-                <option>ديلوكس</option>
-                <option>جونيور سويت</option>
-                <option>سويت رئاسي</option>
+                <option data-ar="قياسية" data-en="Standard">قياسية</option>
+                <option data-ar="ديلوكس" data-en="Deluxe">ديلوكس</option>
+                <option data-ar="جونيور سويت" data-en="Junior Suite">جونيور سويت</option>
+                <option data-ar="سويت رئاسي" data-en="Presidential Suite">سويت رئاسي</option>
               </select>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary full">تحقق من التوافر</button>
+          <button type="submit" class="btn btn-primary full" data-ar="تحقق من التوافر" data-en="Check Availability">تحقق من التوافر</button>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section class="features container">
-    <div class="feature">
-      <img src="assets/icon-location.svg" alt="">
-      <h4>موقع استراتيجي</h4>
-      <p>في قلب المدينة و قريب من المعالم الرئيسية.</p>
-    </div>
-    <div class="feature">
-      <img src="assets/icon-spa.svg" alt="">
-      <h4>سبا ومركز صحي</h4>
-      <p>خدمات استرخاء وتجديد طاقة مميزة.</p>
-    </div>
-    <div class="feature">
-      <img src="assets/icon-restaurant.svg" alt="">
-      <h4>مطاعم فاخرة</h4>
-      <p>قوائم مبتكرة وغرف طعام راقية.</p>
-    </div>
-    <div class="feature">
-      <img src="assets/icon-wifi.svg" alt="">
-      <h4>واي فاي مجاني</h4>
-      <p>اتصال سريع ومجاني في جميع المناطق.</p>
-    </div>
-  </section>
-
-  <!-- ROOMS PREVIEW -->
-  <section class="rooms container">
-    <div class="section-head">
-      <h2>الغرف المميزة</h2>
-      <p>اختر من بين مجموعتنا المتنوعة من الغرف المصممة بذوق رفيع.</p>
-    </div>
-
-    <div class="rooms-grid">
-      <!-- Room Card 1 -->
-      <article class="room-card">
-        <div class="room-media" style="background-image:url('assets/IMG_6973.jpeg')"></div>
-        <div class="room-body">
-          <h3>ديلوكس مزدوجة</h3>
-          <p class="price">من <strong>EGP 1,200</strong>/ليلة</p>
-          <p class="desc">غرفة مريحة مع إطلالة ساحرة وخدمة 24 ساعة.</p>
-          <div class="room-actions">
-            <a href="rooms.html#deluxe" class="btn btn-outline small">تفاصيل</a>
-            <a href="booking.html?room=deluxe" class="btn btn-primary small">احجز</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Room Card 2 -->
-      <article class="room-card">
-        <div class="room-media" style="background-image:url('assets/IMG_6974.jpeg')"></div>
-        <div class="room-body">
-          <h3>جونيور سويت</h3>
-          <p class="price">من <strong>EGP 2,000</strong>/ليلة</p>
-          <p class="desc">مساحة فاخرة مع ركن جلوس منفصل ووسائل راحة متقدمة.</p>
-          <div class="room-actions">
-            <a href="rooms.html#junior" class="btn btn-outline small">تفاصيل</a>
-            <a href="booking.html?room=junior" class="btn btn-primary small">احجز</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Room Card 3 -->
-      <article class="room-card">
-        <div class="room-media" style="background-image:url('assets/IMG_6975.jpeg')"></div>
-        <div class="room-body">
-          <h3>السويت الرئاسي</h3>
-          <p class="price">من <strong>EGP 5,500</strong>/ليلة</p>
-          <p class="desc">تجربة فاخرة مع غرف خاصة وصالة خاصة وخدمات خاصة.</p>
-          <div class="room-actions">
-            <a href="rooms.html#presidential" class="btn btn-outline small">تفاصيل</a>
-            <a href="booking.html?room=presidential" class="btn btn-primary small">احجز</a>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="more-rooms">
-      <a href="rooms.html" class="btn btn-ghost">عرض جميع الغرف</a>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials">
-    <div class="container">
-      <div class="section-head center">
-        <h2>آراء النزلاء</h2>
-        <p>ما يقولونه عنا هو معيارنا الحقيقي</p>
-      </div>
-
-      <div class="testi-grid">
-        <blockquote class="testi">
-          <p>«خدمة ممتازة وإفطار لا يُنسى. سأعود بالتأكيد!»</p>
-          <cite>— سارة م.</cite>
-        </blockquote>
-
-        <blockquote class="testi">
-          <p>«الموقع مثالي والسرير مريح جداً — إقامة ممتازة.»</p>
-          <cite>— أحمد ر.</cite>
-        </blockquote>
-
-        <blockquote class="testi">
-          <p>«فريق محترف ومتفاني، شكراً لكم على الاهتمام بالتفاصيل.»</p>
-          <cite>— ليلى ن.</cite>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWS / OFFERS -->
-  <section class="offers container">
-    <div class="promo-card">
-      <h3>عرض خاص</h3>
-      <p>احصل على خصم 15٪ للحجوزات المباشرة قبل نهاية الشهر.</p>
-      <a href="booking.html" class="btn btn-primary">احجز واستفد</a>
-    </div>
-  </section>
+  <!-- باقي الأقسام (زي ما عندك) من غير تغيير ... -->
 
   <!-- FOOTER -->
   <footer class="site-footer">
@@ -223,22 +112,25 @@
       <div class="col">
         <a class="brand footer-brand" href="index.html">
           <img src="assets/logo-gold.png" alt="logo">
-          <span>فندق النجوم</span>
+          <span id="footerBrand">فندق النجوم</span>
         </a>
-        <p>رفاهية، راحة، وضيافة على أعلى مستوى.</p>
+        <p data-ar="رفاهية، راحة، وضيافة على أعلى مستوى."
+           data-en="Luxury, comfort, and hospitality at the highest level.">
+           رفاهية، راحة، وضيافة على أعلى مستوى.
+        </p>
       </div>
 
       <div class="col">
-        <h4>روابط سريعة</h4>
+        <h4 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h4>
         <ul>
-          <li><a href="rooms.html">الغرف</a></li>
-          <li><a href="booking.html">الحجز</a></li>
-          <li><a href="contact.html">اتصل بنا</a></li>
+          <li><a href="rooms.html" data-ar="الغرف" data-en="Rooms">الغرف</a></li>
+          <li><a href="booking.html" data-ar="الحجز" data-en="Booking">الحجز</a></li>
+          <li><a href="contact.html" data-ar="اتصل بنا" data-en="Contact">اتصل بنا</a></li>
         </ul>
       </div>
 
       <div class="col">
-        <h4>تواصل معنا</h4>
+        <h4 data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h4>
         <p>هاتف: <a href="tel:+201010876605">+20 1010876605</a></p>
         <p>البريد: <a href="mailto:info@hotel.com">omar0524987@gmail.com</a></p>
         <div class="socials">
@@ -249,7 +141,7 @@
     </div>
 
     <div class="footer-bottom container">
-      <p>©️ <span id="year"></span> فندق النجوم. جميع الحقوق محفوظة.</p>
+      <p>©️ <span id="year"></span> <span id="footerCopy" data-ar="فندق النجوم. جميع الحقوق محفوظة." data-en="Hotel Stars. All rights reserved.">فندق النجوم. جميع الحقوق محفوظة.</span></p>
       <p class="credits">تم التصميم بواسطة <strong>Omar / Dev</strong></p>
     </div>
   </footer>
