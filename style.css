@@ -424,3 +424,50 @@ h1, h2, h3, h4 {
   background: #f8d7da;
   border: 1px solid #f5c6cb;
 }
+
+/* Burger Menu */
+.burger-menu {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+/* لما الموبايل */
+@media (max-width: 768px) {
+  .burger-menu { display: block; }
+  .main-nav { display: none; }
+  .main-nav.active { display: block; background: #111; padding: 15px; }
+  .main-nav ul { flex-direction: column; gap: 15px; }
+}
+
+/* Toggles (لغة + ثيم) */
+.toggles {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.toggles button {
+  background: var(--primary-color);
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+}
+.toggles button:hover {
+  background: var(--primary-hover);
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #121212;
+  color: #eee;
+}
+body.dark-mode .site-header {
+  background: rgba(0,0,0,0.9);
+}
+body.dark-mode .site-footer {
+  background: #000;
+}
