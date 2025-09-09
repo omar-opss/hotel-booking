@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
@@ -53,18 +53,39 @@
         <input type="text" placeholder="الوجهة" required>
         <input type="date" required>
         <input type="date" required>
-        <select>
-          <option>1 ضيف</option>
-          <option>2 ضيوف</option>
-          <option>3 ضيوف</option>
-          <option>4+</option>
-        </select>
-        <select>
-          <option>1 غرفة</option>
-          <option>2 غرف</option>
-          <option>3 غرف</option>
-          <option>4+</option>
-        </select>
+
+        <!-- Guests Dropdown -->
+        <div class="dropdown" id="guestsDropdown">
+          <button type="button" class="dropdown-toggle">1 ضيف</button>
+          <div class="dropdown-menu">
+            <div class="counter">
+              <span>ضيوف</span>
+              <div>
+                <button type="button" class="decrease">-</button>
+                <span class="count">1</span>
+                <button type="button" class="increase">+</button>
+              </div>
+            </div>
+            <button type="button" class="apply">تأكيد</button>
+          </div>
+        </div>
+
+        <!-- Rooms Dropdown -->
+        <div class="dropdown" id="roomsDropdown">
+          <button type="button" class="dropdown-toggle">1 غرفة</button>
+          <div class="dropdown-menu">
+            <div class="counter">
+              <span>غرف</span>
+              <div>
+                <button type="button" class="decrease">-</button>
+                <span class="count">1</span>
+                <button type="button" class="increase">+</button>
+              </div>
+            </div>
+            <button type="button" class="apply">تأكيد</button>
+          </div>
+        </div>
+
         <button type="submit" class="btn">ابحث</button>
       </form>
     </div>
