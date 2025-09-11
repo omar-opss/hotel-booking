@@ -482,3 +482,59 @@ input, select, textarea, button {
   max-width: 100%;
   box-sizing: border-box;
 }
+
+/* =========================
+   Booking Page Styles
+========================= */
+.booking-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.booking-container label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.booking-container input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.booking-container input:focus {
+  border-color: #c5a35c;
+  outline: none;
+  box-shadow: 0 0 5px rgba(197,163,92,0.5);
+}
+
+#submitBtn {
+  width: 100%;
+  padding: 14px;
+  background: #c5a35c;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#submitBtn:hover {
+  background: #a58447;
+}
+
+#messageFeedback {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
