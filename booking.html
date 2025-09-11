@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>الحجز - فندق النجوم</title>
+  <title>الغرف - فندق النجوم</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- الهيدر -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html">
@@ -18,40 +19,61 @@
       <nav class="main-nav">
         <ul>
           <li><a href="index.html">الرئيسية</a></li>
-          <li><a href="rooms.html">الغرف</a></li>
-          <li><a href="booking.html" class="cta active">احجز الآن</a></li>
+          <li><a href="rooms.html" class="active">الغرف</a></li>
+          <li><a href="booking.html" class="cta">احجز الآن</a></li>
           <li><a href="contact.html">اتصل بنا</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <section class="hero small-hero" style="background-image:url('assets/IMG_6978.png');">
+  <!-- هيرو -->
+  <section class="hero small-hero" style="background-image:url('assets/room-hero.jpg');">
     <div class="hero-text">
-      <h1>📅 احجز غرفتك الآن</h1>
-      <p>سهولة وسرعة في الحجز، فقط املأ البيانات أدناه</p>
+      <h1>🏨 غرفنا</h1>
+      <p>اختر الغرفة المناسبة لإقامتك</p>
     </div>
   </section>
 
-  <div class="booking-container container">
-    <form id="bookingForm">
-      <label for="name">الاسم بالكامل</label>
-      <input type="text" id="name" required placeholder="مثال: محمد أحمد">
+  <!-- قائمة الغرف -->
+  <div class="rooms-container container">
 
-      <label for="phone">رقم الهاتف</label>
-      <input type="tel" id="phone" required placeholder="مثال: 01012345678">
+    <!-- غرفة ديلوكس -->
+    <div class="room-card">
+      <img src="assets/room1.jpg" alt="غرفة ديلوكس" class="room-img">
+      <div class="room-info">
+        <h2>غرفة ديلوكس</h2>
+        <p>غرفة واسعة بإطلالة رائعة، تشمل واي فاي مجاني وفطور.</p>
+        <p class="price">السعر: 1200 ج.م / الليلة</p>
+        <a href="booking.html?room=deluxe&price=1200" class="btn btn-primary">احجز الآن</a>
+      </div>
+    </div>
 
-      <label for="checkInDate">تاريخ الوصول</label>
-      <input type="date" id="checkInDate" required>
+    <!-- جناح تنفيذي -->
+    <div class="room-card">
+      <img src="assets/room2.jpg" alt="جناح تنفيذي" class="room-img">
+      <div class="room-info">
+        <h2>جناح تنفيذي</h2>
+        <p>جناح فاخر مع غرفة معيشة خاصة وخدمة مميزة.</p>
+        <p class="price">السعر: 2200 ج.م / الليلة</p>
+        <a href="booking.html?room=executive&price=2200" class="btn btn-primary">احجز الآن</a>
+      </div>
+    </div>
 
-      <label for="checkOutDate">تاريخ المغادرة</label>
-      <input type="date" id="checkOutDate" required>
+    <!-- غرفة عائلية -->
+    <div class="room-card">
+      <img src="assets/room3.jpg" alt="غرفة عائلية" class="room-img">
+      <div class="room-info">
+        <h2>غرفة عائلية</h2>
+        <p>مثالية للعائلات، تتسع حتى 4 أشخاص مع كافة وسائل الراحة.</p>
+        <p class="price">السعر: 1800 ج.م / الليلة</p>
+        <a href="booking.html?room=family&price=1800" class="btn btn-primary">احجز الآن</a>
+      </div>
+    </div>
 
-      <button type="submit" id="submitBtn" class="btn btn-primary full">احجز الآن</button>
-      <div id="messageFeedback"></div>
-    </form>
   </div>
 
+  <!-- الفوتر -->
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="col">
@@ -88,7 +110,6 @@
     </div>
   </footer>
 
-  <script type="module" src="booking.js"></script>
-
 </body>
 </html>
+
