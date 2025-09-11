@@ -144,3 +144,57 @@ bookingForm.addEventListener("submit", async (e) => {
   }
 });
 
+
+// ================================
+// Booking Form Script
+// ================================
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("bookingForm");
+  const messageBox = document.getElementById("messageFeedback");
+
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const checkIn = document.getElementById("checkInDate").value;
+    const checkOut = document.getElementById("checkOutDate").value;
+
+    // Validation
+    if (!name || !phone || !checkIn || !checkOut) {
+      showMessage("❌ من فضلك املأ جميع الحقول", "error");
+      return;
+    }
+
+    if (new Date(checkOut) <= new Date(checkIn)) {
+      showMessage("⚠️ تاريخ المغادرة يجب أن يكون بعد الوصول", "error");
+      return;
+    }
+
+    // Success
+    showMessage("✅ تم تسجيل الحجز بنجاح! سيتم تحويلك لصفحة التأكيد...", "success");
+
+    setTimeout(() => {
+      window.location.href = "thankyou.html";
+    }, 2000);
+  });
+
+  function showMessage(msg, type) {
+    messageBox.textContent = msg;
+    messageBox.style.padding = "12px";
+    messageBox.style.marginTop = "15px";
+    messageBox.style.borderRadius = "8px";
+
+    if (type === "success") {
+      messageBox.style.background = "#e6f7e6";
+      messageBox.style.color = "#2d7a2d";
+      messageBox.style.border = "1px solid #2d7a2d";
+    } else {
+      messageBox.style.background = "#ffe6e6";
+      messageBox.style.color = "#b30000";
+      messageBox.style.border = "1px solid #b30000";
+    }
+  }
+});
