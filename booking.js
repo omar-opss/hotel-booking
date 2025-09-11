@@ -1,4 +1,6 @@
-// Firebase SDK imports
+// ==============================
+//  Firebase SDK imports
+// ==============================
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
@@ -17,22 +19,43 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// ==============================
 // عناصر الصفحة
+// ==============================
 const bookingForm = document.getElementById("bookingForm");
 const submitBtn = document.getElementById("submitBtn");
 const messageFeedback = document.getElementById("messageFeedback");
+const roomDetailsBox = document.getElementById("roomDetails");
 
-// دالة لعرض الرسائل
+// ==============================
+// دالة عرض الرسائل
+// ==============================
 function showMessage(message, isSuccess) {
   messageFeedback.textContent = message;
   messageFeedback.className = isSuccess ? "message success" : "message error";
 }
 
-// ✅ دالة التحقق من التداخل
-async function isRoomAvailable(roomId, checkIn, checkOut) {
+// ==============================
+// قراءة بيانات الغرفة من الرابط
+// ==============================
+const params = new URLSearchParams(window.location.search);
+const roomName = params.get("room") || "غير محددة";
+const roomPrice = params.get("price") || "غير محدد";
+
+if (roomDetailsBox) {
+  roomDetailsBox.innerHTML = `
+    <h2>🛏 الغرفة المختارة: ${roomName}</h2>
+    <p>💰 السعر: ${roomPrice} ج.م / الليلة</p>
+  `;
+}
+
+// ==============================
+// دالة التحقق من التداخل
+// ==============================
+async function isRoomAvailable(roomName, checkIn, checkOut) {
   const bookingsRef = collection(db, "bookings");
   const snapshot = await getDocs(
-    query(bookingsRef, where("roomId", "==", roomId))
+    query(bookingsRef, where("roomName", "==", roomName))
   );
 
   const newCheckIn = new Date(checkIn);
@@ -45,7 +68,6 @@ async function isRoomAvailable(roomId, checkIn, checkOut) {
     const existingCheckIn = new Date(data.checkInDate);
     const existingCheckOut = new Date(data.checkOutDate);
 
-    // لو التواريخ متداخلة
     if (
       (newCheckIn < existingCheckOut) && 
       (newCheckOut > existingCheckIn)
@@ -57,7 +79,9 @@ async function isRoomAvailable(roomId, checkIn, checkOut) {
   return available;
 }
 
-// ✅ ربط الفورم
+// ==============================
+// ربط الفورم
+// ==============================
 bookingForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -68,7 +92,6 @@ bookingForm.addEventListener("submit", async (e) => {
   const phone = document.getElementById("phone").value.trim();
   const checkIn = document.getElementById("checkInDate").value;
   const checkOut = document.getElementById("checkOutDate").value;
-  const roomId = "standard_room_101"; // مؤقتًا، ممكن نخليه ييجي من rooms.html
 
   if (!name || !phone || !checkIn || !checkOut) {
     showMessage("⚠️ لازم تملأ كل البيانات", false);
@@ -85,7 +108,7 @@ bookingForm.addEventListener("submit", async (e) => {
   }
 
   try {
-    const available = await isRoomAvailable(roomId, checkIn, checkOut);
+    const available = await isRoomAvailable(roomName, checkIn, checkOut);
 
     if (!available) {
       showMessage("❌ الغرفة غير متاحة في هذه الفترة", false);
@@ -94,11 +117,12 @@ bookingForm.addEventListener("submit", async (e) => {
       return;
     }
 
-    // ✅ إضافة الحجز
+    // ✅ إضافة الحجز في Firestore
     await addDoc(collection(db, "bookings"), {
       guestName: name,
       guestPhone: phone,
-      roomId,
+      roomName,
+      roomPrice,
       checkInDate: checkIn,
       checkOutDate: checkOut,
       createdAt: new Date()
@@ -120,6 +144,3 @@ bookingForm.addEventListener("submit", async (e) => {
   }
 });
 
-// قراءة roomId من الرابط
-const urlParams = new URLSearchParams(window.location.search);
-const roomId = urlParams.get("roomId") || "default_room";
