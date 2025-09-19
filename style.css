@@ -1,358 +1,200 @@
 /* ===============================================
-   STYLE.CSS - النسخة المطورة
+   STYLE.CSS - النسخة المختصرة
    =============================================== */
 
 /* ----------------------------------
-   1. VARIABLES (المتغيرات)
+   1. VARIABLES
 ------------------------------------- */
 :root {
-  --primary-color: #d4af37;     /* اللون الذهبي الأساسي */
-  --primary-hover: #b8932d;     /* درجة أغمق للـ hover */
-  --accent-color: #c19a5b;      /* لون ثانوي */
-  --accent-hover: #a37e46;      /* لون ثانوي عند hover */
+  --primary-color: #d4af37;
+  --primary-hover: #b8932d;
+  --accent-color: #c19a5b;
+  --accent-hover: #a37e46;
+
   --dark-color: #111;
-  --text-color: #333;
-  --light-gray: #f9f9f9;
-  --white-color: #fff;
-  --border-color: #ccc;
+  --text-dark: #333;
+  --text-light: #ddd;
+  --white: #fff;
+  --gray-light: #f9f9f9;
+  --gray-mid: #ccc;
+  --gray-border: #ddd;
+
   --main-font: 'Cairo', sans-serif;
+
   --radius-sm: 6px;
   --radius-md: 10px;
-  --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --radius-lg: 12px;
+
+  --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 20px rgba(0,0,0,0.1);
+
   --transition: all 0.3s ease;
 }
 
 /* ----------------------------------
    2. RESET & BASE STYLES
 ------------------------------------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   font-family: var(--main-font);
-  background: var(--white-color);
-  color: var(--text-color);
+  background: var(--white);
+  color: var(--text-dark);
   line-height: 1.6;
   transition: background 0.4s, color 0.4s;
 }
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.3s;
-}
-
-h1, h2, h3, h4 {
-  color: var(--dark-color);
-}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; transition: color 0.3s; }
+h1, h2, h3, h4 { color: var(--dark-color); }
 
 /* ----------------------------------
-   3. UTILITY CLASSES
+   3. UTILITIES
 ------------------------------------- */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+.section { padding: 60px 0; }
+.section-head { text-align: center; margin-bottom: 40px; }
+
+.card-box {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  padding: 20px;
 }
 
-.section {
-  padding: 60px 0;
-}
-
-.section-head {
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
   text-align: center;
-  margin-bottom: 40px;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
 }
+.btn.full { width: 100%; }
+.btn-primary { background: var(--primary-color); color: var(--white); }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-accent { background: var(--accent-color); color: var(--white); }
+.btn-accent:hover { background: var(--accent-hover); }
 
 /* ----------------------------------
    4. HEADER / NAVBAR
 ------------------------------------- */
 .site-header {
   background: rgba(0, 0, 0, 0.7);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  padding: 15px 0;
+  position: fixed; top: 0; width: 100%;
+  z-index: 1000; padding: 15px 0;
   transition: background 0.3s;
 }
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--white); }
+.brand-logo { height: 40px; }
 
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+.main-nav { transition: max-height 0.4s ease, opacity 0.3s ease; }
+.main-nav ul { list-style: none; display: flex; gap: 25px; }
+.main-nav a { color: var(--white); font-weight: 500; }
+.main-nav a:hover, .main-nav .active { color: var(--primary-color); }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  color: var(--white-color);
-}
+.burger-menu { display: none; font-size: 28px; color: var(--white); cursor: pointer; }
 
-.brand-logo {
-  height: 40px;
-}
-
-.main-nav {
-  transition: max-height 0.4s ease, opacity 0.3s ease;
-}
-
-.main-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-.main-nav a {
-  color: var(--white-color);
-  font-weight: 500;
-}
-
-.main-nav a:hover,
-.main-nav .active {
-  color: var(--primary-color);
-}
-
-/* Burger Menu */
-.burger-menu {
-  display: none;
-  font-size: 28px;
-  color: white;
-  cursor: pointer;
-}
-
-/* Toggles (لغة + ثيم) */
-.toggles {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
+.toggles { display: flex; gap: 10px; align-items: center; }
 .toggles button {
-  background: var(--primary-color);
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  color: white;
-  font-size: 14px;
+  background: var(--primary-color); border: none;
+  padding: 6px 10px; border-radius: var(--radius-sm);
+  cursor: pointer; color: var(--white); font-size: 14px;
   transition: var(--transition);
 }
-.toggles button:hover {
-  background: var(--primary-hover);
-}
+.toggles button:hover { background: var(--primary-hover); }
 
 /* ----------------------------------
-   5. GENERAL COMPONENTS
+   5. HERO SECTION
 ------------------------------------- */
-.btn {
-  display: inline-block;
-  padding: 12px 25px;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  transition: var(--transition);
-  text-align: center;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: var(--primary-color);
-  color: var(--white-color);
-}
-.btn-primary:hover {
-  background: var(--primary-hover);
-}
-.btn.full {
-  width: 100%;
-}
-
-/* ----------------------------------
-   6. SECTIONS
-------------------------------------- */
-
-/* HERO SECTION */
 .hero {
-  position: relative;
-  height: 100vh;
-  color: var(--white-color);
-  display: flex;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
+  position: relative; height: 100vh;
+  color: var(--white); display: flex; align-items: center;
+  background-size: cover; background-position: center;
 }
 .hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 1;
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,0.5); z-index: 1;
 }
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-}
-.hero-text h1 {
-  font-size: 3rem;
-  margin-bottom: 15px;
-}
+.hero-content { position: relative; z-index: 2; width: 100%; }
+.hero-text h1 { font-size: 3rem; margin-bottom: 15px; }
 
-/* QUICK BOOKING */
+/* ----------------------------------
+   6. QUICK BOOKING
+------------------------------------- */
 .quick-booking {
   background: rgba(255, 255, 255, 0.9);
-  padding: 15px;
-  border-radius: 12px;
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
+  padding: 15px; border-radius: var(--radius-lg);
+  margin-top: 20px; display: flex; gap: 10px;
+  flex-wrap: wrap; justify-content: center;
 }
+.quick-booking input, .quick-booking select {
+  padding: 8px; border-radius: var(--radius-md);
+  border: 1px solid var(--gray-mid);
+  font-size: 14px; transition: var(--transition);
+}
+.quick-booking .btn { @extend .btn-accent; }
 
-.quick-booking input,
-.quick-booking select {
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  font-size: 14px;
-  transition: var(--transition);
-}
-
-.quick-booking .btn {
-  background: var(--accent-color);
-  color: var(--white-color);
-}
-.quick-booking .btn:hover {
-  background: var(--accent-hover);
-}
-
-/* ROOMS */
-.rooms-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-}
-.room-card {
-  background: var(--white-color);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-}
-.room-card:hover {
-  transform: translateY(-5px);
-}
-.room-media {
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-}
+/* ----------------------------------
+   7. ROOMS
+------------------------------------- */
+.rooms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.room-card { @extend .card-box; overflow: hidden; }
+.room-card:hover { transform: translateY(-5px); }
+.room-media { height: 200px; background-size: cover; background-position: center; }
 .room-body { padding: 15px; }
 .room-body .price { color: var(--primary-color); font-weight: bold; }
 
-/* BOOKING PAGE */
-.booking-form-card,
-.thankyou-card,
-.contact-grid,
-.room-card {
-  transition: background 0.4s, color 0.4s;
-}
-
-/* CONTACT PAGE */
+/* ----------------------------------
+   8. CONTACT PAGE
+------------------------------------- */
 .contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: 1000px;
-  margin: 0 auto;
-  background: var(--white-color);
-  padding: 40px;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+  max-width: 1000px; margin: 0 auto;
 }
 .contact-info h3 { font-size: 1.3rem; }
 
-/* THANK YOU PAGE */
+/* ----------------------------------
+   9. THANK YOU PAGE
+------------------------------------- */
 .thankyou-container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px;
 }
-.thankyou-card {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 40px;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow);
-  text-align: center;
-  max-width: 500px;
-}
+.thankyou-card { @extend .card-box; text-align: center; max-width: 500px; }
 .thankyou-card h1 { color: var(--primary-color); }
 
 /* ----------------------------------
-   7. FOOTER
+   10. FOOTER
 ------------------------------------- */
 .site-footer {
-  background: var(--dark-color);
-  color: #ccc;
-  padding: 40px 0 20px;
-  margin-top: 60px;
+  background: var(--dark-color); color: #ccc;
+  padding: 40px 0 20px; margin-top: 60px;
   transition: background 0.4s;
 }
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-.site-footer h4 { color: var(--white-color); }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+.site-footer h4 { color: var(--white); }
 .site-footer a:hover { color: var(--primary-color); }
 .footer-bottom {
-  margin-top: 20px;
-  border-top: 1px solid #333;
-  padding-top: 15px;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
+  margin-top: 20px; border-top: 1px solid #333; padding-top: 15px;
+  font-size: 14px; display: flex; justify-content: space-between;
 }
 
 /* ----------------------------------
-   8. RESPONSIVE
+   11. RESPONSIVE
 ------------------------------------- */
 @media (max-width: 768px) {
   .burger-menu { display: block; }
-  .main-nav {
-    display: none;
-    flex-direction: column;
-    background: #111;
-    padding: 15px;
-  }
-  .main-nav.active {
-    display: flex;
-  }
+  .main-nav { display: none; flex-direction: column; background: #111; padding: 15px; }
+  .main-nav.active { display: flex; }
   .hero-text h1 { font-size: 2.2rem; }
   .contact-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   .quick-booking { flex-direction: column; align-items: stretch; }
-  .quick-booking input,
-  .quick-booking select,
-  .quick-booking .btn { width: 100%; }
+  .quick-booking input, .quick-booking select, .quick-booking .btn { width: 100%; }
 }
 @media (max-width: 480px) {
   .hero-text h1 { font-size: 1.8rem; }
@@ -360,181 +202,67 @@ h1, h2, h3, h4 {
 }
 
 /* ----------------------------------
-   9. DARK MODE
+   12. DARK MODE
 ------------------------------------- */
-body.dark-mode {
-  background: #121212;
-  color: #eee;
-}
-body.dark-mode .site-header {
-  background: rgba(0,0,0,0.9);
-}
-body.dark-mode .site-footer {
-  background: #000;
-}
-body.dark-mode .room-card,
-body.dark-mode .booking-form-card,
-body.dark-mode .thankyou-card,
-body.dark-mode .contact-grid {
-  background: #1e1e1e;
-  color: #ddd;
-}
+body.dark-mode { background: #121212; color: #eee; }
+body.dark-mode .site-header { background: rgba(0,0,0,0.9); }
+body.dark-mode .site-footer { background: #000; }
+body.dark-mode .card-box { background: #1e1e1e; color: var(--text-light); }
 
-/* ===========================
-   HERO SEARCH BOX
-=========================== */
-.search-box {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  margin-top: 25px;
-}
-
+/* ----------------------------------
+   13. HERO SEARCH BOX
+------------------------------------- */
+.search-box { @extend .card-box; margin-top: 25px; }
 .search-box form {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 15px;
-  align-items: end;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px; align-items: end;
 }
-
-.search-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.search-field label {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--dark-color);
-}
-
-.search-field input,
-.search-field button {
-  padding: 10px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-color);
-  font-size: 14px;
-  background: #fff;
-  cursor: pointer;
+.search-field { display: flex; flex-direction: column; gap: 6px; }
+.search-field label { font-size: 14px; font-weight: 600; color: var(--dark-color); }
+.search-field input, .search-field button {
+  padding: 10px; border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-mid);
+  font-size: 14px; background: var(--white); cursor: pointer;
 }
 
 /* Dropdown */
-.dropdown {
-  position: relative;
-}
+.dropdown { position: relative; }
 .dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%; left: 0;
-  width: 220px;
-  background: #fff;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow);
-  margin-top: 5px;
-  padding: 10px;
-  z-index: 10;
+  display: none; position: absolute; top: 100%; left: 0;
+  width: 220px; background: var(--white);
+  border: 1px solid var(--gray-mid);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);
+  margin-top: 5px; padding: 10px; z-index: 10;
 }
-.dropdown-menu .counter {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.dropdown-menu .count {
-  margin: 0 10px;
-}
-.dropdown-menu button {
-  padding: 5px 10px;
-}
-.dropdown-menu .apply {
-  width: 100%;
-  margin-top: 10px;
-  background: var(--primary-color);
-  color: #fff;
-  border: none;
-}
-
-/* زرار Dropdown */
+.dropdown-menu .counter { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.dropdown-menu .count { margin: 0 10px; }
+.dropdown-menu button { padding: 5px 10px; }
+.dropdown-menu .apply { @extend .btn-primary; width: 100%; margin-top: 10px; }
 .dropdown-toggle {
-  background: #fff;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  padding: 10px;
-  font-size: 14px;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
+  background: var(--white); border: 1px solid var(--gray-mid);
+  border-radius: var(--radius-sm); padding: 10px;
+  font-size: 14px; cursor: pointer; width: 100%; text-align: left;
   transition: var(--transition);
 }
-.dropdown-toggle:hover {
-  border-color: var(--primary-color);
-}
+.dropdown-toggle:hover { border-color: var(--primary-color); }
+.dropdown.open .dropdown-menu { display: block; }
 
-/* لما الـ Dropdown يفتح */
-.dropdown.open .dropdown-menu {
-  display: block;
-}
+input, select, textarea, button { max-width: 100%; box-sizing: border-box; }
 
-input, select, textarea, button {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* =========================
-   Booking Page Styles
-========================= */
-.booking-container {
-  max-width: 600px;
-  margin: 50px auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-.booking-container label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #333;
-}
-
+/* ----------------------------------
+   14. BOOKING PAGE
+------------------------------------- */
+.booking-container { @extend .card-box; max-width: 600px; margin: 50px auto; padding: 30px; }
+.booking-container label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--text-dark); }
 .booking-container input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  width: 100%; padding: 12px; margin-bottom: 20px;
+  border: 1px solid var(--gray-border); border-radius: var(--radius-md);
   font-size: 15px;
 }
-
 .booking-container input:focus {
-  border-color: #c5a35c;
-  outline: none;
+  border-color: var(--primary-color); outline: none;
   box-shadow: 0 0 5px rgba(197,163,92,0.5);
 }
+#submitBtn { @extend .btn-accent; width: 100%; padding: 14px; font-size: 16px; border-radius: var(--radius-md); }
+#messageFeedback { margin-top: 15px; font-size: 14px; text-align: center; }
 
-#submitBtn {
-  width: 100%;
-  padding: 14px;
-  background: #c5a35c;
-  border: none;
-  color: white;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-#submitBtn:hover {
-  background: #a58447;
-}
-
-#messageFeedback {
-  margin-top: 15px;
-  font-size: 14px;
-  text-align: center;
-}
